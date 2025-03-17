@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:38:06 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/03/07 19:52:24 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:39:07 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,39 @@ Base *generate(void) {
 }
 
 void identify(Base *p) {
+  if (!p) {
+    std::cout << "Null pointer" << std::endl;
+    return;
+  }
+
   if (dynamic_cast<A *>(p))
     std::cout << "A" << std::endl;
   else if (dynamic_cast<B *>(p))
     std::cout << "B" << std::endl;
-  else
+  else if (dynamic_cast<C *>(p))
     std::cout << "C" << std::endl;
 }
 
-void identify(Base &p) { p.identify_type(); }
+void identify(Base &p) {
+  try {
+    A &a = dynamic_cast<A &>(p);
+    std::cout << "A" << std::endl;
+    (void)a;
+    return;
+  } catch (std::bad_cast &) {
+  }
+  try {
+    B &b = dynamic_cast<B &>(p);
+    std::cout << "B" << std::endl;
+    (void)b;
+    return;
+  } catch (std::bad_cast &) {
+  }
+  try {
+    C &c = dynamic_cast<C &>(p);
+    std::cout << "C" << std::endl;
+    (void)c;
+    return;
+  } catch (std::bad_cast &) {
+  }
+}
