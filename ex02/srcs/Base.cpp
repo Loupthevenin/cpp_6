@@ -6,7 +6,7 @@
 /*   By: ltheveni <ltheveni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 19:38:06 by ltheveni          #+#    #+#             */
-/*   Updated: 2025/03/17 15:39:07 by ltheveni         ###   ########.fr       */
+/*   Updated: 2025/03/19 08:49:14 by ltheveni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,20 @@ void identify(Base &p) {
     std::cout << "A" << std::endl;
     (void)a;
     return;
-  } catch (std::bad_cast &) {
+  } catch (std::exception &) {
   }
   try {
     B &b = dynamic_cast<B &>(p);
     std::cout << "B" << std::endl;
     (void)b;
     return;
-  } catch (std::bad_cast &) {
+  } catch (std::exception &) {
   }
   try {
     C &c = dynamic_cast<C &>(p);
     std::cout << "C" << std::endl;
     (void)c;
     return;
-  } catch (std::bad_cast &) {
+  } catch (std::exception &) {
   }
 }
